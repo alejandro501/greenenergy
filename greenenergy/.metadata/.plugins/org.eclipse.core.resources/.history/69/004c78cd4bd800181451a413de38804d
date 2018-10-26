@@ -1,0 +1,10 @@
+spring.thymeleaf.cache=false
+spring.mvc.locale-resolver=fixed
+#spring.mvc.locale=en
+
+spring.datasource.url=jdbc:postgresql://ec2-54-246-86-167.eu-west-1.compute.amazonaws.com:5432/d3k8k2dts7f4ih
+spring.datasource.username=spring-boot-heroku-example
+spring.datasource.password=spring-boot-heroku-example
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+spring.jpa.hibernate.ddl-auto=create-drop

@@ -1,0 +1,5 @@
+INSERT INTO Blogger (id, age, name) VALUES (1, 25, 'Alexander');
+INSERT INTO Blogger (id, age, name) VALUES (2, 25, 'Kamilla');
+
+INSERT INTO STORIES (id, title, content, posted, blogger_id) VALUES (1, 'Test_title', 'Test content', '2018-10-31', (SELECT id FROM blogger WHERE name = 'Alexander'));
+INSERT INTO STORIES (id, title, content, posted, blogger_id) VALUES (2, 'Test2_title', 'Test content', '2018-11-01', (SELECT id FROM blogger WHERE name = 'Alexander'));

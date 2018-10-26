@@ -1,0 +1,27 @@
+package com.greenenergy.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import com.greenenergy.domain.Story;
+
+@Repository
+public interface StoryRepository extends CrudRepository<Story, Long> {
+	
+	//SELECT * FROM STORIES
+	List<Story> findAll();
+	
+	//SELECT * FROM STORY WHERE posted IN (SELECT MAX(posted) FROM story) LIMIT 1;
+	Story findFirstByOrderByPostedDesc();
+
+	//@Query(value="SELECT * FROM stories WHERE title = ?1 LIMIT 1", nativeQuery=true)
+	//@Query(value="SELECT * FROM stories WHERE title = ?:title LIMIT 1", nativeQuery=true)
+	@Query(value="SELECT s FROM Story s WHERE s.title = :title LIMIT 1")
+	Story findByTitle(@Param("title") String title);
+	
+	List<Story> findAllByBloggerNameIgnoreCaseOrderByPostedDesc(String name);
+}

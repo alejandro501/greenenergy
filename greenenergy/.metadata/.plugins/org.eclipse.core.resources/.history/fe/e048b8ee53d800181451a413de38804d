@@ -1,0 +1,12 @@
+spring.thymeleaf.cache=false
+spring.mvc.locale-resolver=fixed
+#spring.mvc.locale=en
+
+spring.datasource.platform=postgres
+spring.datasource.url=jdbc:postgresql://ec2-54-246-86-167.eu-west-1.compute.amazonaws.com:5432/postgresql-fitted-55021
+spring.datasource.username=tizzwuqydagwmm
+spring.datasource.password=9a88893d6eed1e5c334c2978735eaa273b0458ceefe18c2a439aaab45af9f72c
+
+spring.jpa.generate-ddl=true
+
+spring.jpa.hibernate.ddl-auto=create-drop

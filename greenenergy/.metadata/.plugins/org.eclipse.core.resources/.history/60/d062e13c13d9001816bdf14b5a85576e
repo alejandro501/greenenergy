@@ -1,0 +1,26 @@
+package com.greenenergy.controller;
+
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class ApiController {
+	@RequestMapping("/story")
+	public String story(Model model) {
+		model.addAttribute("pageTitle", "Greenenergy title");
+		model.addAttribute("story", storyService.getStory());
+		return "story";
+	}
+
+	@RequestMapping("/title/{title}")
+	public String searchForUser(@PathVariable(value="title") String title, Model model) throws Exception {
+		if (title == null) {
+			throw new Exception("No story with this title.");
+		}
+		model.addAttribute("story", storyService.getSpecificStory(title));
+		return "story";
+	}
+
+}

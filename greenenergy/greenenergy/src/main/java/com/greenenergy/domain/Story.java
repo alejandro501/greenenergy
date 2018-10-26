@@ -1,0 +1,73 @@
+package com.greenenergy.domain;
+
+import java.util.Date;
+
+public class Story {
+
+	private long id;
+	private String title;
+	private String content;
+	private Date posted;
+	private Blogger blogger;
+
+	public Story() {
+
+	}
+
+	public Story(String title, String content, Date posted, Long bloggerId) {
+		super();
+		this.title = title;
+		this.content = content;
+		this.posted = posted;
+		this.blogger = new Blogger(bloggerId, "Alex", 25);
+	}
+	
+	public Story(Long id, String title, String content, Date posted, Blogger blogger) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.content = content;
+		this.posted = posted;
+		this.blogger = blogger;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public Date getPosted() {
+		return posted;
+	}
+
+	public void setPosted(Date posted) {
+		this.posted = posted;
+	}
+
+	public Blogger getBlogger() {
+		return blogger;
+	}
+
+	public void setBlogger(Blogger blogger) {
+		this.blogger = blogger;
+	}
+}

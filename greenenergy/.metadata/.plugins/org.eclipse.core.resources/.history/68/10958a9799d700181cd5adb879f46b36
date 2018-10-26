@@ -1,0 +1,5 @@
+package com.greenenergy.controller;
+
+public class ExceptionGeneral {
+
+}

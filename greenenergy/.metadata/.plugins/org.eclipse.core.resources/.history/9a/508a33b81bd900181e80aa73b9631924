@@ -1,0 +1,19 @@
+package com.greenenergy.repository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class StoryRepository {
+	private JdbcTemplate jdbc;
+
+	@Autowired
+	public StoryRepository(JdbcTemplate jdbc) {
+		this.jdbc = jdbc;
+	}
+	
+	public List<Story> findAll(){
+		String sql = 
+	}
+}

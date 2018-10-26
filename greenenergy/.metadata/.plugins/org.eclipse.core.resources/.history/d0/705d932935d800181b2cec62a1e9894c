@@ -1,0 +1,5 @@
+package com.greenenergy.repository;
+
+public interface BloggerRepository {
+
+}

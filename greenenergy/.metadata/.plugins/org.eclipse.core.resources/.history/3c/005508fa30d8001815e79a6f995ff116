@@ -1,0 +1,15 @@
+package com.greenenergy.service;
+
+import org.springframework.stereotype.Service;
+
+import com.greenenergy.repository.StoryRepository;
+
+@Service
+public class StoryService {
+	
+	StoryRepository storyRepository;
+	
+	public void setStoryRepository(StoryRepository storyRepository) {
+		this.storyRepository = storyRepository;
+	}
+}

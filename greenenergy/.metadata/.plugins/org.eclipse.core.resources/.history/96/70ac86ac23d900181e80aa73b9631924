@@ -1,0 +1,29 @@
+package com.greenenergy.repository;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+import com.greenenergy.domain.Story;
+
+@Repository
+public class StoryRepository {
+	private JdbcTemplate jdbc;
+
+	@Autowired
+	public StoryRepository(JdbcTemplate jdbc) {
+		this.jdbc = jdbc;
+	}
+	
+	public List<Story> findAll(){
+		String sql = "SELECT * FROM story ORDER BY posted DESC";
+		return jdbc.query(sql, (rs,i) -> new Story(
+				rs.getString("title"),
+				rs.getString("content"),
+				rs.getDate("posted"),
+				rs.getLong("blogger_id")
+				));
+	}
+}

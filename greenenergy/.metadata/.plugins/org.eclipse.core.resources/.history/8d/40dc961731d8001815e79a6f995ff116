@@ -1,0 +1,54 @@
+package com.greenenergy.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.greenenergy.domain.Story;
+import com.greenenergy.repository.StoryRepository;
+
+/* 
+ * Controller: Rest controller methods look for a VIEW with the String that it returns eg. 
+ * return "terms" wants to return the view "terms".
+ */
+@Controller
+public class HomeController {
+
+	@Autowired
+	StoryRepository storyRepository;
+	
+	@RequestMapping("/")
+	public String stories(Model model) {
+		model.addAttribute("pageTitle", "Preserve your environment any way you can!");
+		model.addAttribute("stories", getStories());
+		return "stories";
+	}
+	
+	@RequestMapping("/user/{id}")
+	public String searchForUser(@PathVariable(value="id") String id ) {
+		if(id == null) {
+			new ExceptionGeneral();
+		}
+		return "user";
+	}
+	
+	@ExceptionHandler(Exception.class)
+	public String exceptionHandler(HttpServletRequest rA, Exception ex, Model model) {
+		model.addAttribute("errMessage", ex.getMessage());
+		return "exceptionHandler";
+}
+	
+	
+	private List<Story> getStories(){
+		List<Story> stories = storyRepository.findAll();
+		
+		return stories;
+	}
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE-edge" />
+<meta name="viewport" content="widht-device-width, initial-scale=1" />
+
+<title th:text="${pageTitle}">Page Title</title>
+
+<link rel="stylesheet" th:href="@{../static/css/main.css}" href="../static/css/main.css" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+
+</head>
+<body>
+	<h1>Main Heading</h1>
+	
+	<article th:each="story : ${stories}" >
+		<header>
+			<h1 th:text="${story.title}"></h1>
+		</header>
+		
+		<section>
+			<p th:utext="${story.content}"></p>
+		</section>
+		
+		<footer>
+			<address>
+				Sent in by: <span th:text="${story.author}">Author of the story</span>
+			</address>
+		</footer>
+		
+	</article>
+	<p>
+		Be <b>bold</b> in stating your key points. Put them in a list:
+	</p>
+	<ul>
+		<li>The first item in your list</li>
+		<li>The second item; <i>italicize</i> key words
+		</li>
+	</ul>
+	<p>Improve your image by including an image.</p>
+	<p>
+		<img src="http://www.mygifs.com/CoverImage.gif"
+			alt="A Great HTML Resource">
+	</p>
+	<p>
+		Add a link to your favorite <a href="https://www.dummies.com/">Web
+			site</a>. Break up your page with a horizontal rule or two.
+	</p>
+	<hr>
+	<p>
+		Finally, link to <a href="page2.html">another page</a> in your own Web
+		site.
+	</p>
+	<!-- And add a copyright notice.-->
+	<p>&#169; Wiley Publishing, 2011</p>
+</body>
+</html>

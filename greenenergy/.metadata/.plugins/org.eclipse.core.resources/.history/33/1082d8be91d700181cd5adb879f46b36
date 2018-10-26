@@ -1,0 +1,50 @@
+package com.greenenergy.controller;
+
+import java.util.ArrayList;
+import java.util.Locale;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.greenenergy.domain.Story;
+
+/* 
+ * Controller: Rest controller methods look for a VIEW with the String that it returns eg. 
+ * return "terms" wants to return the view "terms".
+ */
+@Controller
+public class HomeController {
+	/* 
+	 * The HomeController class index method rules all the mapping of particular
+	 * URLs so what's happening/being displayed when clicking the URL Static files
+	 * can be displayed from the static folder BUT the controller always overrules
+	 * them
+	 */
+	@RequestMapping("/")
+	public String stories(Model model, Locale locale) {
+		model.addAttribute("pageTitle", "Preserve your environment any way you can!");
+		model.addAttribute("stories", getStories());
+		System.out.println("asdfg"+locale.getLanguage());
+		return "stories";
+	}
+	
+	private ArrayList<Story> getStories(){
+		ArrayList<Story> stories = new ArrayList<>();
+		Story story = new Story();
+		story.setAuthor("Alexander");
+		story.setContent("Beautiful day ahead.");
+		story.setTitle("My first story");
+		
+		Story story2 = new Story();
+		story2.setAuthor("Alexander");
+		story2.setContent("This day is shit. ");
+		story2.setTitle("My second story");
+		
+		stories.add(story);	
+		stories.add(story2);
+		
+		return stories;
+	}
+}

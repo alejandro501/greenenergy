@@ -1,0 +1,7 @@
+package com.greenenergy.repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface Story extends CrudRepository<Story, Long> {
+	
+}

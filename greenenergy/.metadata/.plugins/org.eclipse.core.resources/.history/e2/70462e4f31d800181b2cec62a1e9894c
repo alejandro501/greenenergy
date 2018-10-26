@@ -1,0 +1,22 @@
+package com.greenenergy.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.greenenergy.repository.StoryRepository;
+
+@Service
+public class StoryService {
+	
+	StoryRepository storyRepository;
+	
+	@Autowired
+	public void setStoryRepository(StoryRepository storyRepository) {
+		this.storyRepository = storyRepository;
+	}
+
+	public Object getStories() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

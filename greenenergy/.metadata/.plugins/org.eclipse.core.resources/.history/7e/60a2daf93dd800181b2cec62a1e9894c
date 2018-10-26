@@ -1,0 +1,56 @@
+package com.greenenergy.service;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.greenenergy.domain.Blogger;
+import com.greenenergy.domain.Story;
+import com.greenenergy.repository.BloggerRepository;
+import com.greenenergy.repository.StoryRepository;
+
+/*
+ * Service layer: Business layer (logic, calculations etc.)
+ * Services and Controllers are singletons
+ */
+@Service
+public class StoryService {
+	
+	private StoryRepository storyRepository;
+	private BloggerRepository bloggerRepository;
+	
+	@Autowired
+	public void setStoryRepository(StoryRepository storyRepository) {
+		this.storyRepository = storyRepository;
+	}
+	
+	@Autowired
+	public void setBloggerRepository(BloggerRepository bloggerRepository) {
+		this.bloggerRepository = bloggerRepository;
+	}
+
+	public List<Story> getStories() {
+		return storyRepository.findAll();
+	}
+	
+	public Story getStory() {
+		return storyRepository.findFirstByPostedDesc();
+	}
+	
+	/*
+	 * This annotation tells the Service to run the method only once -> When the Service is instantiated
+	 * The method is automatically invoked by the container bc of this annotation
+	 */
+	@PostConstruct
+	public void init() {
+		Blogger blogger = new Blogger("InnerAlex", 25);
+		bloggerRepository.save(blogger);
+		
+		Story story = new Story("Inner title", "Inner content", new Date(), blogger);
+		storyRepository.save(story);
+	}
+}
